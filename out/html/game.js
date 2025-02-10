@@ -18,62 +18,6 @@
 
   var TITLE = "Social Democracy: An Alternate History" + '_' + "Autumn Chen";
 
-  BrowserUserInterface.prototype.populateSaveSlots = function(max_slots, max_auto_slots) {
-    // this fills in the save information
-    var that = this;
-    function createLoadListener(i) {
-      return function(evt) {
-        that.loadSlot(i);
-      };
-    }
-    function createSaveListener(i) {
-      return function(evt) {
-        that.saveSlot(i);
-      };
-    }
-    function createDeleteListener(i) {
-      return function(evt) {
-        that.deleteSlot(i);
-      };
-    }
-    function createExportListener(i) {
-      return function(evt) {
-        that.exportSlot(i);
-      };
-    }
-      function populateSlot(id) {
-          var save_element = document.getElementById('save_info_' + id);
-          var save_button = document.getElementById('save_button_' + id);
-          var delete_button = document.getElementById('delete_button_' + id);
-          if (localStorage[that.save_prefix + '_' + id]) {
-              var timestamp = localStorage[that.save_prefix+'_timestamp_' + id];
-              save_element.textContent = timestamp;
-              save_button.textContent = "Load";
-              save_button.onclick = createLoadListener(id);
-              delete_button.onclick = createDeleteListener(id);
-          } else {
-              save_button.textContent = "Save";
-              save_element.textContent = "Empty";
-              save_button.onclick = createSaveListener(id);
-          }
-          try {
-              var export_button = document.getElementById('export_button_' + id);
-              if (localStorage[that.save_prefix + '_' + id]) {
-                  export_button.onclick = createExportListener(id);
-              }
-          } catch(error) {
-          }
-
-      }
-      for (var i = 0; i < max_slots; i++) {
-          populateSlot(i);
-      }
-      for (i = 0; i < 4; i++) {
-          populateSlot('a'+i);
-      }
-
-  };
-
   // the url is a link to game.json
   // test url: https://aucchen.github.io/social_democracy_mods/v0.1.json
   // TODO; 
