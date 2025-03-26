@@ -156,8 +156,6 @@ on-arrival: spd_normalized_percent = spd_normalized * 100
 
 SPD: [+ spd_normalized_percent +]%
 
-SPD: [+ spd_votes +]% 
-
 [? if sapd_formed: SAPD: [+ sapd_votes +]% ?]
 
 Z + BVP: [+ z_votes +]%
