@@ -148,12 +148,15 @@ Prussian police loyalty: [+ prussian_police_loyalty : loyalty +]
 [? if spd_in_government : Interior police loyalty: [+ interior_police_loyalty : loyalty +] ?]
 
 @polls
+on-arrival: spd_normalized_percent = spd_normalized * 100
 
 = Projected election results
 
 (if the election were to be held now):
 
-SPD: [+ spd_votes +]%
+SPD: [+ spd_normalized_percent +]%
+
+SPD: [+ spd_votes +]% 
 
 [? if sapd_formed: SAPD: [+ sapd_votes +]% ?]
 
